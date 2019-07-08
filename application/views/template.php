@@ -84,49 +84,11 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="<?= base_url('assets') ?>/dist/img/default.png" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block"><?= $this->session->userdata('name') ?></a>
-        </div>
-      </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-         <!--  <li class="nav-item">
-            
-          </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Layout Options
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../layout/top-nav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/fixed-topnav.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Navbar</p>
-                </a>
-              </li>
-            </ul>
-          </li> -->
-          <!-- area menu dinamis -->
+          
             <?php 
             $menu = $this->session->userdata('menu');
             $main_menu = $this->db->get_where('tabel_menu',array('is_main_menu'=>0,'type'=>$menu))->result();
@@ -149,7 +111,7 @@
                         foreach ($submenu->result() as $sub) {
                           echo "<li class='nav-item'>
                                   <a href='".base_url($sub->link)."' class='nav-link ".($stat == $main->link ? 'active' : '')."'>
-                                    <i class='".$sub->icon."'></i>
+                                    <i class='text-info ".$sub->icon."'></i>
                                       <p>
                                         ".$sub->nama_menu."
                                       </p>
@@ -169,6 +131,25 @@
               }
             }
             ?>
+            <li class="nav-header">LABELS</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-circle text-danger"></i>
+                <p class="text">Important</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-circle text-warning"></i>
+                <p class="text">Warning</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-circle text-info"></i>
+                <p class="text">Imformational</p>
+              </a>
+            </li>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
